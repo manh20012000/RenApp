@@ -2,10 +2,14 @@ import { StyleSheet, Text, View } from 'react-native'
 import React from 'react'
 import BootonGate from '../../navigate/BootonNavigate/BootonGate'
 import styles from './StyleHome'
- const ScreenHome=()=>{
+ const ScreenHome=({navigation})=>{
   return (
    
-    <BootonGate/>
+    <BootonGate  />
+
+
+ 
+   
   )
 }
 export default ScreenHome;

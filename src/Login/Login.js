@@ -1,5 +1,5 @@
 import { StyleSheet, Text, View,Image,TextInput, TouchableOpacity,
-  KeyboardAvoidingView,
+  KeyboardAvoidingView,ActivityIndicator,
   } from 'react-native'
   import React, { Component,useState,useEffect} from 'react'
   import {LinearGradient} from 'expo-linear-gradient';
@@ -9,26 +9,45 @@ import { Ionicons } from '@expo/vector-icons';
 import { FontAwesome5 } from '@expo/vector-icons';
 import { AntDesign,Entypo,MaterialCommunityIcons  } from '@expo/vector-icons';  
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
+import Spinner from 'react-native-loading-spinner-overlay';
+
 
 const Login=({navigation})=>{
         const[name,setName]=useState('');
          const[pass,setPass]=useState('');
-        
+         const [loading, setLoading] = useState(false);
          const login=()=>{
-          if(pass.length==0||name.length==0){
-            alert('nhap thong tin')
-          }else if(pass==='123'&& name==='user'){
-           navigation.navigate('Home');
-            setPass('');
-            setName('');
-                }
-       }
+          // if(pass.length==0||name.length==0){
+          //   alert('nhap thong tin')
+          // }else if(pass==='123'&& name==='user'){
+               setLoading(true);
+          // Giả sử rằng việc đăng nhập mất 2 giây
+                setTimeout(() => {
+                setLoading(false);
+                navigation.navigate('Home'); 
+                 setPass('');
+                setName(''); 
+            // Sau đó, điều hướng đến trang Home
+            // navigation.navigate('Home');
+          }, 2000);
+         
+           
+           
+           
+           
+            // }else{
+            //   alert('thong tin nhập sai')
+            // }
+          }
   const[hienthi,setHienthi]=useState(true);
          
   const anhien=()=>{
        setHienthi(!hienthi);
       
   }
+
+ 
+ 
   return (
     <View style={styles.container}>
             <View style={styles.header}>
@@ -80,10 +99,15 @@ const Login=({navigation})=>{
                       >
                         <LinearGradient colors={['#faf', '#3b5998', '#192f6a']}
                                     style={styles.linagradine} > 
-                            <Text style={styles.btnTxt}>Login</Text>
+                                 <Text style={styles.btnTxt}>Login</Text>
                           </LinearGradient>  
-                      </TouchableOpacity>
-                      <View style={styles.ViewIcon}>
+                          <Spinner
+                            visible={loading}
+                            textContent={'Đangs tải...'}
+                            textStyle={{ color: '#FFF' }}
+                          />
+                         </TouchableOpacity>
+                         <View style={styles.ViewIcon}>
 
                         <Text 
                             style={styles.labelwith} >Login With</Text>

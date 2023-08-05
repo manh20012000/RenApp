@@ -1,5 +1,5 @@
 import React from 'react';
-import { Text, View } from 'react-native';
+import { Text, View,StyleSheet } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import Trangchu from '../../Home/TrangChu/Trangchu';
@@ -9,15 +9,15 @@ import Infor from '../../Home/Information/Infor';
 
 const bottonTad=createBottomTabNavigator();
 
-const BootonGate=()=>{
+const BootonGate=(navigation)=>{
   return (
     
     <bottonTad.Navigator    
-    
+   
           screenOptions={{
-             tabBarStyle:{backgroundColor:'black'},
-             headerShown:true,
-             tabBarActiveTintColor:'white',
+             tabBarStyle:{backgroundColor:'black',paddingTop:10},
+             headerShown:false,
+             tabBarActiveTintColor:'red',
           }}
     >
       <bottonTad.Screen 
@@ -25,11 +25,10 @@ const BootonGate=()=>{
          component={Trangchu}
         //  options={{
         //      tabBarIcon:({focused})=>(
-        //        <Image
-        //         source={require('./Image/home.png')}
-        //           style={[styles.imgstyle,
-        //          focused&& styles.bottonFoucused]}
-        //       />
+        //       //  <Image
+        //       //  source={require('RenApp/src/Image/home.png')} 
+                 
+        //       // />
         //      )
         //  }}
           
